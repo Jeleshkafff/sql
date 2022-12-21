@@ -361,6 +361,8 @@ INSERT INTO `Team_players` (`Player`,`Team`,`Date_of_membership`,`Does_it_play`)
 ('5','1','2022-07-03',true);
 
 
+
+
 INSERT INTO `Team_players` (`Player`,`Team`,`Date_of_membership`,`Does_it_play`) VALUES
 ('6','2','2020-04-05',true);
 INSERT INTO `Team_players` (`Player`,`Team`,`Date_of_membership`,`Does_it_play`) VALUES
@@ -675,6 +677,18 @@ INSERT INTO `Workers_in_the_tournament` (`Tournament`,`employee`) VALUES
 -- ('','');
 -- INSERT INTO `location` (`id_location`,`name_location`) VALUES
 -- ('','')-- тригерр на результатыalter--процедура завершение матча 
+
+INSERT INTO `Workers_in_the_tournament` (`Tournament`,`employee`) VALUES
+('3','24'),('3','25'),
+('3','26'),
+('3','27'),
+('3','28'),
+('3','29'),
+('3','30'),
+('3','31'),
+('3','5')
+
+
 ALTER TABLE result DROP FOREIGN KEY result_ibfk_1 ; 
 SHOW CREATE TABLE  result;
 -- create procedure cloze_proc 
