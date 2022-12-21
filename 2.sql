@@ -2,7 +2,7 @@ DROP TRIGGER IF EXISTS `plus_Turnier_team`;
 DELIMITER //
 
 CREATE TRIGGER `plus_Turnier_team` AFTER INSERT 
-ON ` tournament_teams` FOR EACH ROW BEGIN 
+ON `tournament_teams` FOR EACH ROW BEGIN 
 	DECLARE Tournament INT UNSIGNED;
     Set  @Tournament = new.Tournament;
  update tournament set
@@ -193,6 +193,30 @@ and result.Team = team.id_Team and tournament.name = `tournament`;
 	END // 
 DELIMITER ;
 
+insert into  team_players (Player, Team,Date_of_membership) values (8, 33,'2021-01-01');
+
+
+
 -- 2022-12-18 00:00:00
 SET SQL_SAFE_UPDATES = 0;
-Call show_match("BLAST Premier: World Final 2022");
+Call show_match("BLAST Titans - Arenas");
+
+-- -------------------------------------------------------------------------------------------------
+DROP PROCEDURE If EXISTS `show_countrie`;
+DELIMITER //
+CREATE PROCEDURE `show_countrie`(
+IN `tournament` varchar(45))
+BEGIN 
+select country.The_name_of_the_country , count(country.The_name_of_the_country)
+from country,players,team_players,team,tournament_teams,tournament 
+where tournament_teams.Tournament = tournament.id_Tournament 
+and tournament_teams.Team = team.id_Team and team.id_Team = team_players.Team 
+and team_players.Player = players.id_Players and players.Country = country.id_country 
+and tournament.name = `tournament` group by(country.The_name_of_the_country);
+	END // 
+DELIMITER ;
+
+-- 2022-12-18 00:00:00
+SET SQL_SAFE_UPDATES = 0;
+Call show_countrie("BLAST Titans - Arenas");
+
